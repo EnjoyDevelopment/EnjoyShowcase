@@ -51,6 +51,7 @@ flutter:
     - assets/images/3.png
     - assets/images/enjoy.png
     - assets/images/paulavatar.png
+    - assets/images/jonavatar.png
     
  # fonts:
   #  - family: Chewy

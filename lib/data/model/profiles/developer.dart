@@ -20,14 +20,3 @@ class Developer {
   //final List<Video> videos;
 }
 
-/*class Video {
-  Video({
-    @required this.title,
-    @required this.thumbnail,
-    @required this.url,
-  });
-
-  final String title;
-  final String thumbnail;
-  final String url;
-}*/

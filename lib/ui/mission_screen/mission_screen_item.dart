@@ -170,9 +170,15 @@ class IntroPageItem extends StatelessWidget {
   }
 
   void onSubmit(BuildContext context) {
-    Application.router.navigateTo(context, Routes.enterProfileScreen,
+
+
+    String paul  = "PAUL";
+    Application.router.navigateTo(context, "/enterProfileScreen?developername=$paul",
         transition: TransitionType.fadeIn,
         transitionDuration: const Duration(milliseconds: 500));
+
+
+        
   }
 
   Widget overlayGradient() {

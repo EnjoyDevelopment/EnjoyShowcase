@@ -1,7 +1,9 @@
 import 'dart:ui' as ui;
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
+import '../../Application.dart';
 import '../../data/model/profiles/developer.dart';
 import 'developer_details_enter_animation.dart';
 
@@ -14,20 +16,25 @@ class DeveloperDetailsPage extends StatelessWidget {
   final Developer artist;
   final DeveloperDetailsEnterAnimation animation;
 
-
-void _handleDragEnd(DragEndDetails details) {
+  void _handleDragEnd(DragEndDetails details) {
+  
     bool _isFlingGesture = -details.velocity.pixelsPerSecond.dx > 700;
     if (_isFlingGesture) {
-    
-    
-
-    } 
+      String paul = "JON";
+      Application.router.navigateTo(
+          context1, "/enterProfileScreen?developername=$paul",
+          transition: TransitionType.fadeIn,
+          transitionDuration: const Duration(milliseconds: 500));
+          
+    }
   }
-
+static BuildContext context1;
   Widget _buildAnimation(BuildContext context, Widget child) {
+
+ context1 = context;
     return new GestureDetector(
- onHorizontalDragEnd: _handleDragEnd,
-      
+       
+      onHorizontalDragEnd: _handleDragEnd,
       child: new Stack(
         fit: StackFit.expand,
         children: <Widget>[

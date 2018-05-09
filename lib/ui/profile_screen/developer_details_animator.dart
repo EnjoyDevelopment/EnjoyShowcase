@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../data/model/profiles/developer_paul.dart';
+import '../../data/model/profiles/developer.dart';
+import '../../data/model/profiles/developer_data.dart';
 import 'developer_details_page.dart';
 
 enum DeveloperName{
@@ -12,17 +13,20 @@ enum DeveloperName{
 
 class DeveloperDetailsAnimator extends StatefulWidget {
 
-  DeveloperName _developerName;
+DeveloperName _developerName;
+  //DeveloperName _developerName;
   DeveloperDetailsAnimator(this._developerName);
 
-
   @override
-  _DeveloperDetailsAnimator createState() => new _DeveloperDetailsAnimator();
+  _DeveloperDetailsAnimator createState() => new _DeveloperDetailsAnimator(_developerName);
 }
 
 class _DeveloperDetailsAnimator extends State<DeveloperDetailsAnimator>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
+
+  DeveloperName _developerName;
+  _DeveloperDetailsAnimator(this._developerName);
 
   @override
   void initState() {
@@ -42,8 +46,27 @@ class _DeveloperDetailsAnimator extends State<DeveloperDetailsAnimator>
 
   @override
   Widget build(BuildContext context) {
+
+
+      Developer developer;
+
+
+      switch(_developerName)
+      {
+        case DeveloperName.Paul:{
+          developer = DeveloperData.paul;
+          break;
+        }
+
+          case DeveloperName.Jon:{
+          developer = DeveloperData.jon;
+          break;
+        }
+      }
+
+
     return new DeveloperDetailsPage(
-      artist: DeveloperPaul.paul,
+      artist: developer,
       controller: _controller,
     );
   }
