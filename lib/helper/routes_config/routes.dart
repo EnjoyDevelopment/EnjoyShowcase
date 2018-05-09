@@ -9,6 +9,7 @@ class Routes {
   static String enterHomeScreen = "/enterNameScreen";
   static String enterJourneyTextScreen = "/enterJourneyTextScreen";
   static String enterIntroScreen = "/enterIntroScreen";
+  static String enterProfileScreen = "/enterProfileScreen";
 
   static void configureRoutes(Router router) {
     router.notFoundHandler = new Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) {
@@ -17,6 +18,7 @@ class Routes {
     router.define(enterHomeScreen, handler: enterHomeScreenHandler);
     router.define(enterJourneyTextScreen, handler: enterJourneyTextScreenHandler);
     router.define(enterIntroScreen, handler: enterIntroScreenHandler);
+    router.define(enterProfileScreen, handler: enterProfileScreenHandler);
   }
 }
 

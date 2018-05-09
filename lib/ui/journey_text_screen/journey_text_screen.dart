@@ -11,28 +11,20 @@ class JourneyTextScreen extends StatefulWidget {
 }
 
 class JourneyTextScreenState extends State<JourneyTextScreen> {
-
-
-
   @override
   void initState() {
     super.initState();
-
   }
 
   @override
   Widget build(BuildContext context) {
-
-
-
     return new Scaffold(
-
       body: _buildBody(),
     );
   }
 
- var _submitBtnColour = new Color(0xFFf7406a);
- var _canSubmitName = false;
+  var _submitBtnColour = new Color(0xFFf7406a);
+  var _canSubmitName = false;
 
   Widget _buildBody() {
     return new Container(
@@ -47,7 +39,7 @@ class JourneyTextScreenState extends State<JourneyTextScreen> {
       ),
       child: new Column(children: <Widget>[
         new Container(
-            margin: new EdgeInsets.only(top: 130.0, left: 25.0 , right: 25.0),
+            margin: new EdgeInsets.only(top: 130.0, left: 25.0, right: 25.0),
             width: MediaQuery.of(context).size.width,
             child: new Text(
               "Hi Tim. Nice to meet you. Let me take you on a tour of Enjoy Development.",
@@ -56,31 +48,26 @@ class JourneyTextScreenState extends State<JourneyTextScreen> {
                   fontSize: 18.0,
                   color: Colors.black54,
                   fontFamily: 'anton',
-                  fontWeight: FontWeight.w400 ),
+                  fontWeight: FontWeight.w400),
             )),
-   
         submitButton(),
       ]),
     );
   }
 
   Widget submitButton() {
-
     return new InkWell(
-    onTap: ()=>onSubmit(),
-      
-
-    child:new Container(
-      width: 170.0,
-      height: 40.0,
-      alignment: FractionalOffset.center,
-      margin: new EdgeInsets.only(top: 40.0),
-      decoration: new BoxDecoration(
-        color:    _submitBtnColour ,
-        // color: Colors.pink[200],
-        borderRadius: new BorderRadius.all(const Radius.circular(30.0)),
-      ),
-
+      onTap: () => onSubmit(),
+      child: new Container(
+        width: 170.0,
+        height: 40.0,
+        alignment: FractionalOffset.center,
+        margin: new EdgeInsets.only(top: 40.0),
+        decoration: new BoxDecoration(
+          color: _submitBtnColour,
+          // color: Colors.pink[200],
+          borderRadius: new BorderRadius.all(const Radius.circular(30.0)),
+        ),
         child: new Text(
           "Okay",
           style: new TextStyle(
@@ -91,16 +78,16 @@ class JourneyTextScreenState extends State<JourneyTextScreen> {
             letterSpacing: 0.0,
           ),
         ),
-    ),
+      ),
     );
   }
 
-
   void onSubmit() {
     //if(_canSubmitName){
-      Application.router.navigateTo(context,Routes.enterIntroScreen , transition:  TransitionType.fadeIn,
-      transitionDuration: const Duration(milliseconds: 1000));
-        
-   // }
+    Application.router.navigateTo(context, Routes.enterIntroScreen,
+        transition: TransitionType.fadeIn,
+        transitionDuration: const Duration(milliseconds: 1000));
+
+    // }
   }
 }

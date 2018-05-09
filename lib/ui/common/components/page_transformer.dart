@@ -1,5 +1,9 @@
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
+
+import '../../../Application.dart';
+import '../../../helper/routes_config/routes.dart';
 
 /// A function that builds a [PageView] lazily.
 typedef PageView PageViewBuilder(
@@ -22,13 +26,6 @@ class PageVisibilityResolver {
   /// simple PageView that simply has an array of children passed to it.
   PageVisibility resolvePageVisibility(int pageIndex) {
 
-       if(pageIndex == 5){
-          
-          return new PageVisibility(
-            visibleFraction:1.0,
-            pagePosition: 0.0,
-          );
-        }
 
     final double pagePosition = _calculatePagePosition(pageIndex);
     final double visiblePageFraction =
@@ -118,6 +115,9 @@ class PageTransformer extends StatefulWidget {
 class _PageTransformerState extends State<PageTransformer> {
   PageVisibilityResolver _visibilityResolver;
 
+
+
+
   @override
   Widget build(BuildContext context) {
     final pageView = widget.pageViewBuilder(
@@ -125,6 +125,8 @@ class _PageTransformerState extends State<PageTransformer> {
 
     final controller = pageView.controller;
     final viewPortFraction = controller.viewportFraction;
+
+  //onFinish(context) ;
 
     return new NotificationListener<ScrollNotification>(
       onNotification: (ScrollNotification notification) {
@@ -138,4 +140,15 @@ class _PageTransformerState extends State<PageTransformer> {
       child: pageView,
     );
   }
+
+  
+    void onFinish(BuildContext context) {
+    Application.router.navigateTo(context, Routes.enterProfileScreen,
+        transition: TransitionType.fadeIn,
+        transitionDuration: const Duration(milliseconds: 1000));
+  }
+
+
+
+  
 }

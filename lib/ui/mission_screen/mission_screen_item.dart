@@ -1,9 +1,12 @@
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
+import 'package:path/path.dart';
 
+import '../../Application.dart';
+import '../../helper/routes_config/routes.dart';
 import '../common/components/page_transformer.dart';
 import 'intro_item.dart';
-
 
 class IntroPageItem extends StatelessWidget {
   IntroPageItem({
@@ -88,19 +91,6 @@ class IntroPageItem extends StatelessWidget {
       ),
     );
 
-    final imageOverlayGradient = new DecoratedBox(
-      decoration: new BoxDecoration(
-        gradient: new LinearGradient(
-          begin: FractionalOffset.bottomCenter,
-          end: FractionalOffset.topCenter,
-          colors: [
-            const Color(0xFF000000),
-            const Color(0x00000000),
-          ],
-        ),
-      ),
-    );
-
     return new Padding(
       padding: const EdgeInsets.symmetric(
         vertical: 16.0,
@@ -109,12 +99,91 @@ class IntroPageItem extends StatelessWidget {
       child: new Material(
         elevation: 4.0,
         borderRadius: new BorderRadius.circular(8.0),
-        child: new Stack(
-          fit: StackFit.expand,
-          children: [
-            image,
-            imageOverlayGradient,
-            _buildTextContainer(context),
+        child: item.pageNumber != 6
+            ? pageStack(context, image)
+            : lastPageStack(context),
+      ),
+    );
+  }
+
+  Widget pageStack(BuildContext context, Image image) {
+    return new Stack(
+      fit: StackFit.expand,
+      children: [
+        image,
+        //  overlayGradient(),
+        _buildTextContainer(context),
+      ],
+    );
+  }
+
+  Widget lastPageStack(BuildContext context) {
+    return new Stack(
+      alignment: AlignmentDirectional.topCenter,
+      fit: StackFit.loose,
+      children: [
+        _continueTextContainer(),
+        submitButton(context),
+      ],
+    );
+  }
+
+  Widget _continueTextContainer() {
+    return new Container(
+      margin: new EdgeInsets.only(top: 130.0),
+      child: new Text(
+        "Now I'll introduce you to the team...",
+        textAlign: TextAlign.center,
+        style: new TextStyle(
+            fontSize: 18.0,
+            color: Colors.black54,
+            fontFamily: 'anton',
+            fontWeight: FontWeight.w400),
+      ),
+    );
+  }
+
+  Widget submitButton(BuildContext context) {
+    return new InkWell(
+      onTap: () => onSubmit(context),
+      child: new Container(
+        width: 170.0,
+        height: 40.0,
+        alignment: FractionalOffset.center,
+        margin: new EdgeInsets.only(top: 180.0),
+        decoration: new BoxDecoration(
+          color: new Color(0xFFf7406a),
+          borderRadius: new BorderRadius.all(const Radius.circular(30.0)),
+        ),
+        child: new Text(
+          "Continue",
+          style: new TextStyle(
+            color: Colors.white,
+            fontSize: 16.0,
+            fontWeight: FontWeight.w600,
+            fontFamily: 'jose',
+            letterSpacing: 0.0,
+          ),
+        ),
+      ),
+    );
+  }
+
+  void onSubmit(BuildContext context) {
+    Application.router.navigateTo(context, Routes.enterProfileScreen,
+        transition: TransitionType.fadeIn,
+        transitionDuration: const Duration(milliseconds: 500));
+  }
+
+  Widget overlayGradient() {
+    return new DecoratedBox(
+      decoration: new BoxDecoration(
+        gradient: new LinearGradient(
+          begin: FractionalOffset.bottomCenter,
+          end: FractionalOffset.topCenter,
+          colors: [
+            const Color(0xFF000000),
+            const Color(0x00000000),
           ],
         ),
       ),
