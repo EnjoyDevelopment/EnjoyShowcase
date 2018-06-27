@@ -22,21 +22,5 @@ var enterIntroScreenHandler = new Handler(
 
 var enterProfileScreenHandler = new Handler(
     handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-
-  DeveloperName developerName;
-  switch (params["developername"]?.first) {
-    case "JON":
-      {
-        developerName = DeveloperName.Jon;
-        break;
-      }
-
-      case "PAUL":
-      {
-        developerName = DeveloperName.Paul;
-        break;
-      }
-  }
-
-  return new DeveloperDetailsAnimator(developerName);
+  return new DeveloperDetailsAnimator(params["developername"]?.first);
 });

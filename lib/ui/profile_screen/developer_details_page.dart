@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:ui' as ui;
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
@@ -7,33 +8,51 @@ import '../../Application.dart';
 import '../../data/model/profiles/developer.dart';
 import 'developer_details_enter_animation.dart';
 
+enum DeveloperEnum { paul, jon, ben, ross }
+
 class DeveloperDetailsPage extends StatelessWidget {
   DeveloperDetailsPage({
-    @required this.artist,
+    @required this.developer,
     @required AnimationController controller,
   }) : animation = new DeveloperDetailsEnterAnimation(controller);
 
-  final Developer artist;
+  Developer developer;
   final DeveloperDetailsEnterAnimation animation;
+  var developers = new LinkedHashMap();
 
-  void _handleDragEnd(DragEndDetails details) {
-  
-    bool _isFlingGesture = -details.velocity.pixelsPerSecond.dx > 700;
-    if (_isFlingGesture) {
-      String paul = "JON";
-      Application.router.navigateTo(
-          context1, "/enterProfileScreen?developername=$paul",
-          transition: TransitionType.fadeIn,
-          transitionDuration: const Duration(milliseconds: 500));
-          
+  void _handleDragEnd(DragEndDetails dragDetails) {
+    if (-dragDetails.velocity.pixelsPerSecond.dx > 700) {
+      _navigateToNextDeveloper(nextDeveloper(developer.developerEnumIndex, true));
+    } else if (dragDetails.velocity.pixelsPerSecond.dx > 700) {
+      _navigateToNextDeveloper(nextDeveloper(developer.developerEnumIndex, false));
     }
   }
-static BuildContext context1;
-  Widget _buildAnimation(BuildContext context, Widget child) {
 
- context1 = context;
+  void _navigateToNextDeveloper(String developerName) {
+    Application.router.navigateTo(
+        context1, "/enterProfileScreen?developername=$developerName",
+        transition: TransitionType.fadeIn,
+        transitionDuration: const Duration(milliseconds: 500));
+  }
+
+  String nextDeveloper(int  developerEnumIndex, bool isForward) {
+
+    developers[0] = DeveloperEnum.paul.toString();
+    developers[1] = DeveloperEnum.jon.toString();
+    developers[2] = DeveloperEnum.ben.toString();
+    developers[3] = DeveloperEnum.ross.toString();
+
+    if (isForward) {
+      return developers[ developerEnumIndex + 1];
+    } else {
+      return developers[ developerEnumIndex - 1];
+    }
+  }
+
+  static BuildContext context1;
+  Widget _buildAnimation(BuildContext context, Widget child) {
+    context1 = context;
     return new GestureDetector(
-       
       onHorizontalDragEnd: _handleDragEnd,
       child: new Stack(
         fit: StackFit.expand,
@@ -41,7 +60,7 @@ static BuildContext context1;
           new Opacity(
             opacity: animation.backdropOpacity.value,
             child: new Image.asset(
-              artist.backdropPhoto,
+              developer.backdropPhoto,
               fit: BoxFit.cover,
             ),
           ),
@@ -91,7 +110,7 @@ static BuildContext context1;
         margin: const EdgeInsets.only(top: 32.0, left: 16.0),
         padding: const EdgeInsets.all(3.0),
         child: new ClipOval(
-          child: new Image.asset(artist.avatar),
+          child: new Image.asset(developer.avatar),
         ),
       ),
     );
@@ -104,7 +123,7 @@ static BuildContext context1;
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           new Text(
-            artist.firstName + '\n' + artist.lastName,
+            developer.firstName + '\n' + developer.lastName,
             style: new TextStyle(
               color: Colors.white.withOpacity(animation.nameOpacity.value),
               fontWeight: FontWeight.bold,
@@ -112,7 +131,7 @@ static BuildContext context1;
             ),
           ),
           new Text(
-            artist.location,
+            developer.location,
             style: new TextStyle(
               color: Colors.white.withOpacity(animation.locationOpacity.value),
               fontWeight: FontWeight.w500,
@@ -125,7 +144,7 @@ static BuildContext context1;
             height: 1.0,
           ),
           new Text(
-            artist.biography,
+            developer.biography,
             style: new TextStyle(
               color: Colors.white.withOpacity(animation.biographyOpacity.value),
               height: 1.4,

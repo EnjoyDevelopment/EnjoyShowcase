@@ -4,7 +4,6 @@ ADDED from C:\FlutterProjects\enjoy_showcase\android\app\src\main\AndroidManifes
 INJECTED from C:\FlutterProjects\enjoy_showcase\android\app\src\main\AndroidManifest.xml:1:1-39:12
 INJECTED from C:\FlutterProjects\enjoy_showcase\android\app\src\main\AndroidManifest.xml:1:1-39:12
 INJECTED from C:\FlutterProjects\enjoy_showcase\android\app\src\main\AndroidManifest.xml:1:1-39:12
-MERGED from [:video_player] C:\FlutterProjects\enjoy_showcase\build\video_player\intermediates\manifests\full\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:url_launcher] C:\FlutterProjects\enjoy_showcase\build\url_launcher\intermediates\manifests\full\debug\AndroidManifest.xml:2:1-14:12
 MERGED from [:sqflite] C:\FlutterProjects\enjoy_showcase\build\sqflite\intermediates\manifests\full\debug\AndroidManifest.xml:2:1-11:12
 MERGED from [:path_provider] C:\FlutterProjects\enjoy_showcase\build\path_provider\intermediates\manifests\full\debug\AndroidManifest.xml:2:1-7:12
@@ -73,8 +72,6 @@ uses-sdk
 INJECTED from C:\FlutterProjects\enjoy_showcase\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\FlutterProjects\enjoy_showcase\android\app\src\main\AndroidManifest.xml
 INJECTED from C:\FlutterProjects\enjoy_showcase\android\app\src\main\AndroidManifest.xml
-MERGED from [:video_player] C:\FlutterProjects\enjoy_showcase\build\video_player\intermediates\manifests\full\debug\AndroidManifest.xml:5:5-44
-MERGED from [:video_player] C:\FlutterProjects\enjoy_showcase\build\video_player\intermediates\manifests\full\debug\AndroidManifest.xml:5:5-44
 MERGED from [:url_launcher] C:\FlutterProjects\enjoy_showcase\build\url_launcher\intermediates\manifests\full\debug\AndroidManifest.xml:5:5-44
 MERGED from [:url_launcher] C:\FlutterProjects\enjoy_showcase\build\url_launcher\intermediates\manifests\full\debug\AndroidManifest.xml:5:5-44
 MERGED from [:sqflite] C:\FlutterProjects\enjoy_showcase\build\sqflite\intermediates\manifests\full\debug\AndroidManifest.xml:7:5-9:41

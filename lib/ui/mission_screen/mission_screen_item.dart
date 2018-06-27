@@ -172,7 +172,7 @@ class IntroPageItem extends StatelessWidget {
   void onSubmit(BuildContext context) {
 
 
-    String paul  = "PAUL";
+    String paul  = "Paul";
     Application.router.navigateTo(context, "/enterProfileScreen?developername=$paul",
         transition: TransitionType.fadeIn,
         transitionDuration: const Duration(milliseconds: 500));

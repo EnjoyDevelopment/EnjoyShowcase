@@ -4,28 +4,22 @@ import '../../data/model/profiles/developer.dart';
 import '../../data/model/profiles/developer_data.dart';
 import 'developer_details_page.dart';
 
-enum DeveloperName{
-  Paul,
-  Jon,
-  Ben
-
-}
+//enum DeveloperName { Paul, Jon, Ben, Ross }
 
 class DeveloperDetailsAnimator extends StatefulWidget {
-
-DeveloperName _developerName;
-  //DeveloperName _developerName;
+  String _developerName;
   DeveloperDetailsAnimator(this._developerName);
 
   @override
-  _DeveloperDetailsAnimator createState() => new _DeveloperDetailsAnimator(_developerName);
+  _DeveloperDetailsAnimator createState() =>
+      new _DeveloperDetailsAnimator(_developerName);
 }
 
 class _DeveloperDetailsAnimator extends State<DeveloperDetailsAnimator>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
 
-  DeveloperName _developerName;
+  String _developerName;
   _DeveloperDetailsAnimator(this._developerName);
 
   @override
@@ -46,27 +40,36 @@ class _DeveloperDetailsAnimator extends State<DeveloperDetailsAnimator>
 
   @override
   Widget build(BuildContext context) {
+    Developer developer;
 
-
-      Developer developer;
-
-
-      switch(_developerName)
-      {
-        case DeveloperName.Paul:{
+    switch (_developerName) {
+      case "Paul":
+        {
           developer = DeveloperData.paul;
           break;
         }
 
-          case DeveloperName.Jon:{
+      case "Jon":
+        {
           developer = DeveloperData.jon;
           break;
         }
-      }
 
+      case "Ben":
+        {
+          developer = DeveloperData.ben;
+          break;
+        }
+
+      case "Ross":
+        {
+          developer = DeveloperData.jon;
+          break;
+        }
+    }
 
     return new DeveloperDetailsPage(
-      artist: developer,
+      developer: developer,
       controller: _controller,
     );
   }

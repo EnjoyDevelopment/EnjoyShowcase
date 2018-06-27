@@ -7,7 +7,6 @@ import 'Application.dart';
 import 'helper/localisation/translations_delegate.dart';
 import 'helper/routes_config/routes.dart';
 import 'ui/common/themes/theme_configuration.dart';
-import 'ui/profile_screen/developer_details_animator.dart';
 import 'ui/splash_screen/splash_screen.dart';
 
 class AppComponent extends StatefulWidget {
